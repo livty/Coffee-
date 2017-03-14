@@ -1,0 +1,35 @@
+<% include ./partials/header %>
+<div class="ui main text container">
+    <div class="ui huge header">Would you like some coffee?</div>
+    <div class="ui top attached segment">
+        <div class="ui divided items">
+            <% beans.forEach(function(bean){ %>
+        
+         <div class="item">
+         <div class="image">
+         <img src="<%= bean.image %>">
+         </div>
+         <div class="content">
+         <a class="header" href="/beans/<%= bean._id %>"><%bean.title%></a>
+         
+         <div class="meta">
+             <span><%= bean.created.toDateString() %></span>
+         </div>
+         
+         <div class="description">
+                 <% if(bean.body && bean.body.length > 0) { %>
+                <p><%= bean.body.substring(0, 100)%></p>
+                <% } %>
+             
+         </div>
+         <div class="extra">
+             <a class="ui floated pink button" href="/beans/<%= bean._id %>">Read more<i class="right chevron icon"></i></a>
+         </div>
+     </div>
+     </div>
+<% }) %>
+        </div>
+    </div>
+</div>
+
+<% include ./partials/footer %>
